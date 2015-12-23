@@ -33,28 +33,28 @@ CSV.open( "results.csv", 'w' ) do |writer|
     	print = false
     	makers = post["makers"] 
     	if (makers.size > 0)
-      	makers.each do |maker|
+        makers.each do |maker|
           # Only try to get the address if the maker hasn't already been checked
-          if !maker_arr.include?(maker["username"]
+          if (!maker_arr.include?(maker["username"])
             maker_arr << maker["username"]
             # Get the locations of the makers from Twitter if they have one listed       
-          	begin
-          		page = Nokogiri::HTML(open("https://twitter.com/" << maker["username"]))
-          		address = page.css('span.ProfileHeaderCard-locationText.u-dir').text
+            begin
+              page = Nokogiri::HTML(open("https://twitter.com/" << maker["username"]))
+              address = page.css('span.ProfileHeaderCard-locationText.u-dir').text
           		add = address.downcase.gsub(/\s+/, "") #downcase and remove whitespace
           		
               # Ensure there is an address listed on the twitter
-              if add.length > 2)
+              if (add.length > 2)
                 puts "#{i} - Product Name: #{post["name"]}. Built by #{maker["username"]} in #{add}"
                 writer << [i, post["name"], maker["username"], add]
               end
 
-          	rescue
-          		puts "Error"
+            rescue
+              puts "Error"
         		end # /begin
-          end
+          end # /if (!maker_arr.include?(maker["username"])
     		end # /makers.each
-    	end # /id (makers.size > 0)
+    	end # /if (makers.size > 0)
     end # /poster.each
   end
 end
