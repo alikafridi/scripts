@@ -1,6 +1,6 @@
 =begin  
 Author: Ali K. Afridi
-Last Updated: 12/21/2015
+Last Updated: 12/23/2015
 
 This script goes through Product Hunt to get a list of all the makers for featured Products.
 It then attempts to find the makers on Twitter, and gets their location if they have one listed on their Twitter profile. 
@@ -56,5 +56,5 @@ CSV.open( "results.csv", 'w' ) do |writer|
     		end # /makers.each
     	end # /if (makers.size > 0)
     end # /poster.each
-  end
-end
+  end # for i in start_days_ago..max_days_ago
+end # CSV.open
