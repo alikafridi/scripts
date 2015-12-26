@@ -1,8 +1,8 @@
 =begin
 Author: Ali Afridi
-Last Updated: 11/20/2015
+Last Updated: 12/26/2015
 
-This script will get all the twitter lists a user has created. 
+This script will add all people from a text file to a twitter list.
 =end
 
 require 'yaml'
@@ -17,8 +17,3 @@ twitter ||= Twitter::REST::Client.new do |config|
   config.access_token_secret = secrets["TWITTER_TOKEN_SECRET"]
 end
 
-userlists = twitter.lists
-
-userlists.each do |list|
-	puts list.name
-end
