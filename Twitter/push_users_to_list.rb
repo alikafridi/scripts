@@ -7,9 +7,15 @@ This script will add all people from a text file to a twitter list.
 
 require 'yaml'
 require 'twitter'
+require 'csv'
 
+# Configure these params
+file_name = ""
+list_slug = ""
+owner_handle = ""
+
+# Twitter Auth
 secrets = YAML.load_file ('../secrets.yml')
-
 twitter ||= Twitter::REST::Client.new do |config|
   config.consumer_key        = secrets["TWITTER_CONSUMER_KEY"]
   config.consumer_secret     = secrets["TWITTER_CONSUMER_SECRET"]
@@ -17,3 +23,8 @@ twitter ||= Twitter::REST::Client.new do |config|
   config.access_token_secret = secrets["TWITTER_TOKEN_SECRET"]
 end
 
+# Input handles from file name and push to twitter
+CSV.foreach(file_name) do |row|
+	handle = row[0].gsub(/\s+/, "")
+	twitter.add_list_member(owner_screen_name: owner_handle, slug: list_slug, screen_name: handle)
+end

@@ -9,9 +9,11 @@ The twitter keys and access tokens should be for the owner of the list.
 require 'yaml'
 require 'twitter'
 
-secrets = YAML.load_file ('../secrets.yml') # This file contains the twitter access information
-slug = "hackers" # Slug/handle for the list you want to get members of
+# Slug/handle for the list you want to get members of
+slug = "hackers" 
 
+# Gets the authentication information from a file called secrets.yml
+secrets = YAML.load_file ('../secrets.yml')
 twitter ||= Twitter::REST::Client.new do |config|
   config.consumer_key        = secrets["TWITTER_CONSUMER_KEY"]
   config.consumer_secret     = secrets["TWITTER_CONSUMER_SECRET"]
