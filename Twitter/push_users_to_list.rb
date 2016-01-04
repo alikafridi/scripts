@@ -10,7 +10,7 @@ require 'twitter'
 require 'csv'
 
 # Configure these params
-file_name = ""
+file_name = "in.csv"
 list_slug = ""
 owner_handle = ""
 
