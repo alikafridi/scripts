@@ -10,9 +10,9 @@ require 'twitter'
 require 'csv'
 
 # Configure these params
-file_name = "in.csv"
-list_slug = ""
-owner_handle = ""
+file_name = "in2.csv"
+list_slug = "follow-old"
+owner_handle = "@AliKAfridi"
 
 # Twitter Auth
 secrets = YAML.load_file ('../secrets.yml')
